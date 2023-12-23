@@ -7,7 +7,7 @@ public class BuildingProcces implements Building{
         do {
             try {
                 list.updateStatus();
-                list.next();
+                if (list.current.name != "Finishing") list.next();
             } catch (IsRejected e) {
                 if (list.current.name == "Project") {
                     System.out.println("Rejected");
@@ -16,7 +16,7 @@ public class BuildingProcces implements Building{
                     list.prev();
                 }
             }
-        }while (list.current.name != "Finishing");
+        }while (list.current.name != "Finishing" || (list.current.name == "Finishing" & list.current.status != Status.DONE));
     }
 
     @Override
